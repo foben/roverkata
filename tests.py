@@ -38,11 +38,15 @@ class TestApiSetup(unittest.TestCase):
         negative_y = lambda: Rover(0, -1)
         negative_width = lambda: Rover(width = -1)
         negative_height = lambda: Rover(height = -1)
+        zero_width = lambda: Rover(width = 0)
+        zero_height = lambda: Rover(height = 0)
         wrong_orientation = lambda: Rover(orientation = 'G')
         self.assertRaises(ValueError, negative_x)
         self.assertRaises(ValueError, negative_y)
         self.assertRaises(ValueError, negative_width)
         self.assertRaises(ValueError, negative_height)
+        self.assertRaises(ValueError, zero_width)
+        self.assertRaises(ValueError, zero_height)
         self.assertRaises(ValueError, wrong_orientation)
 
     def test_inconsistent_setup(self):
@@ -106,22 +110,6 @@ class TestApiSetup(unittest.TestCase):
         self.assertEqual(rover.get_position(), (6, 5))
         rover = rover.backward()
         self.assertEqual(rover.get_position(), (7, 5))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 if __name__ == '__main__':

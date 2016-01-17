@@ -20,7 +20,7 @@ class Rover(object):
                     )
         if not (x >= 0 and y >= 0):
             raise ValueError('x and y coordinates must not be smaller than 0!')
-        if not (width >= 0 and height >= 0):
+        if not (width > 0 and height > 0):
             raise ValueError('width and height must not be smaller than 0')
         if x > width or y > height:
             raise ValueError('x and y coordinates must not be greter than height or width, respectively')
