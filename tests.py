@@ -29,7 +29,7 @@ class TestApiSetup(unittest.TestCase):
     def test_custom_setup(self):
         rover = Rover(5, 5, 'S', 10, 10)
         self.assertEqual(rover.get_position(), (5,5))
-        self.assertEqual(rover.get_orientation(), 'N')
+        self.assertEqual(rover.get_orientation(), 'S')
         self.assertEqual(rover.get_width(), 10)
         self.assertEqual(rover.get_height(), 10)
 
