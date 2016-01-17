@@ -44,7 +44,13 @@ class TestApiSetup(unittest.TestCase):
         self.assertRaises(ValueError, negative_width)
         self.assertRaises(ValueError, negative_height)
         self.assertRaises(ValueError, wrong_orientation)
-        
+
+    def test_inconsistent_setup(self):
+        x_greater_width = lambda: Rover(x = 2, width = 1)
+        y_greater_height = lambda: Rover(y = 2, height = 1)
+        self.assertRaises(ValueError, x_greater_width)
+        self.assertRaises(ValueError, y_greater_height)
+
 
 if __name__ == '__main__':
     unittest.main()
