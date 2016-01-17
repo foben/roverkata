@@ -5,6 +5,12 @@ class Rover(object):
     """
 
     allowed_orientations = ['N', 'S', 'E', 'W']
+    __movements = { 
+            'N' : [0, -1],
+            'E' : [1, 0],
+            'S' : [0, 1],
+            'W' : [-1, 0]
+        }
 
     def __init__(self, x = 0, y = 0, orientation = 'N', width = 5, height = 5):
         if not orientation.upper() in Rover.allowed_orientations:
@@ -21,15 +27,21 @@ class Rover(object):
 
         self.x = x
         self.y = y
-        self.orientation = orientation
+        self.orientation = orientation.upper()
         self.width = width
         self.height = height
 
     def forward(self):
-        return Rover(self.x, self.y, self.orientation, self.width, self.height)
+        to_move = Rover.__movements[self.orientation]
+        return self.__do_move(to_move)
 
     def backward(self):
-        return Rover(self.x, self.y, self.orientation, self.width, self.height)
+        to_move = [-1 * x for x in Rover.__movements[self.orientation]]
+        return self.__do_move(to_move)
+
+    def __do_move(self, to_move):
+        newpos = [ a + b for (a,b) in zip(to_move, [self.x, self.y])] 
+        return Rover(newpos[0], newpos[1], self.orientation, self.width, self.height)
 
     def left(self):
         return Rover(self.x, self.y, self.orientation, self.width, self.height)
