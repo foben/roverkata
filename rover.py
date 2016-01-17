@@ -16,6 +16,8 @@ class Rover(object):
             raise ValueError('x and y coordinates must not be smaller than 0!')
         if not (width >= 0 and height >= 0):
             raise ValueError('width and height must not be smaller than 0')
+        if x > width or y > height:
+            raise ValueError('x and y coordinates must not be greter than height or width, respectively')
 
         self.x = x
         self.y = y
