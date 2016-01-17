@@ -52,8 +52,12 @@ class TestApiSetup(unittest.TestCase):
     def test_inconsistent_setup(self):
         x_greater_width = lambda: Rover(x = 2, width = 1)
         y_greater_height = lambda: Rover(y = 2, height = 1)
+        x_equal_width = lambda: Rover(x = 5, width = 5)
+        y_equal_height = lambda: Rover(y = 8, height = 8) 
         self.assertRaises(ValueError, x_greater_width)
         self.assertRaises(ValueError, y_greater_height)
+        self.assertRaises(ValueError, x_equal_width)
+        self.assertRaises(ValueError, y_equal_height)
 
     def test_forward_movement_north(self):
         rover = Rover(5, 5, 'N', 100, 100)
@@ -110,7 +114,6 @@ class TestApiSetup(unittest.TestCase):
         self.assertEqual(rover.get_position(), (6, 5))
         rover = rover.backward()
         self.assertEqual(rover.get_position(), (7, 5))
-
 
 if __name__ == '__main__':
     unittest.main()
