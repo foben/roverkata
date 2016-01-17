@@ -155,5 +155,35 @@ class TestApiSetup(unittest.TestCase):
         rover = rover.backward()
         self.assertEqual(rover.get_position(), (0, 0))
 
+    def test_rotation_right(self):
+        rover = Rover(orientation = 'N')
+        rover = rover.right()
+        self.assertEqual(rover.get_orientation(), 'E')
+        rover = rover.right()
+        self.assertEqual(rover.get_orientation(), 'S')
+        rover = rover.right()
+        self.assertEqual(rover.get_orientation(), 'W')
+        rover = rover.right()
+        self.assertEqual(rover.get_orientation(), 'N')
+        rover = rover.right().right().right().right()
+        self.assertEqual(rover.get_orientation(), 'N')
+        rover = rover.right().right().right().right().right().right()
+        self.assertEqual(rover.get_orientation(), 'S')
+
+    def test_rotation_left(self):
+        rover = Rover(orientation = 'N')
+        rover = rover.left()
+        self.assertEqual(rover.get_orientation(), 'W')
+        rover = rover.left()
+        self.assertEqual(rover.get_orientation(), 'S')
+        rover = rover.left()
+        self.assertEqual(rover.get_orientation(), 'E')
+        rover = rover.left()
+        self.assertEqual(rover.get_orientation(), 'N')
+        rover = rover.left().left().left().left()
+        self.assertEqual(rover.get_orientation(), 'N')
+        rover = rover.left().left().left().left().left().left()
+        self.assertEqual(rover.get_orientation(), 'S')
+
 if __name__ == '__main__':
     unittest.main()
