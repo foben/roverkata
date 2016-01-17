@@ -18,3 +18,6 @@ class TestApiSetup(unittest.TestCase):
     def test_create_normal(self):
         rover = Rover()
         self.assertIsInstance(rover, Rover)
+
+if __name__ == '__main__':
+    unittest.main()
