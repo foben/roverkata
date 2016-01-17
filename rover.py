@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 class Rover(object):
     """
     The Rover 'state object' representing the rovers position and orientation on Mars' surface.
