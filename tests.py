@@ -115,5 +115,45 @@ class TestApiSetup(unittest.TestCase):
         rover = rover.backward()
         self.assertEqual(rover.get_position(), (7, 5))
 
+    def test_wrap_movement_forward_north(self):
+        rover = Rover(0, 0, 'N', 4, 4)
+        rover = rover.forward()
+        self.assertEqual(rover.get_position(), (0, 3))
+
+    def test_wrap_movement_forward_east(self):
+        rover = Rover(3, 0, 'E', 4, 4)
+        rover = rover.forward()
+        self.assertEqual(rover.get_position(), (0, 0))
+
+    def test_wrap_movement_forward_south(self):
+        rover = Rover(0, 3, 'S', 4, 4)
+        rover = rover.forward()
+        self.assertEqual(rover.get_position(), (0, 0))
+
+    def test_wrap_movement_forward_west(self):
+        rover = Rover(0, 0, 'W', 4, 4)
+        rover = rover.forward()
+        self.assertEqual(rover.get_position(), (3, 0))
+
+    def test_wrap_movement_backward_north(self):
+        rover = Rover(0, 3, 'N', 4, 4)
+        rover = rover.backward()
+        self.assertEqual(rover.get_position(), (0, 0))
+
+    def test_wrap_movement_backward_east(self):
+        rover = Rover(0, 0, 'E', 4, 4)
+        rover = rover.backward()
+        self.assertEqual(rover.get_position(), (3, 0))
+
+    def test_wrap_movement_backward_south(self):
+        rover = Rover(0, 0, 'S', 4, 4)
+        rover = rover.backward()
+        self.assertEqual(rover.get_position(), (0, 3))
+
+    def test_wrap_movement_backward_west(self):
+        rover = Rover(3, 0, 'W', 4, 4)
+        rover = rover.backward()
+        self.assertEqual(rover.get_position(), (0, 0))
+
 if __name__ == '__main__':
     unittest.main()
