@@ -4,7 +4,7 @@ class Rover(object):
     Exposes methods to turn and move the rover, as well as to query its position.
     """
 
-    allowed_orientations = ['N', 'S', 'E', 'W']
+    allowed_orientations = ['N', 'E', 'S', 'W']
     __movements = { 
             'N' : [0, -1],
             'E' : [1, 0],
@@ -46,10 +46,16 @@ class Rover(object):
         return Rover(new_x, new_y, self.orientation, self.width, self.height)
 
     def left(self):
-        return Rover(self.x, self.y, self.orientation, self.width, self.height)
+        return self.__do_turn(-1)
 
     def right(self):
-        return Rover(self.x, self.y, self.orientation, self.width, self.height)
+        return self.__do_turn(1)
+
+    def __do_turn(self, amount):
+        orientation_index = Rover.allowed_orientations.index(self.orientation)
+        new_orientation_index = (orientation_index + amount) % len(Rover.allowed_orientations)
+        new_orientation = Rover.allowed_orientations[new_orientation_index]
+        return Rover(self.x, self.y, new_orientation, self.width, self.height)
 
     def get_position(self):
         return (self.x, self.y)
