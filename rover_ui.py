@@ -23,6 +23,7 @@ def main():
     print_board(rover)
     
     while True:
+        print 'Please give one or more movement commands (f,b,l,r), seperated by commas'
         input = stdin.readline().strip()
         if input.upper() == 'EXIT':
             print 'bye bye!'
