@@ -4,7 +4,19 @@ class Rover(object):
     Exposes methods to turn and move the rover, as well as to query its position.
     """
 
+    allowed_orientations = ['N', 'S', 'E', 'W']
+
     def __init__(self, x = 0, y = 0, orientation = 'N', width = 5, height = 5):
+        if not orientation.upper() in Rover.allowed_orientations:
+            raise ValueError(
+                    'Illegal orientation: {}. Allowed are {}'
+                    .format(orientation, Rover.allowed_orientations)
+                    )
+        if not (x >= 0 and y >= 0):
+            raise ValueError('x and y coordinates must not be smaller than 0!')
+        if not (width >= 0 and height >= 0):
+            raise ValueError('width and height must not be smaller than 0')
+
         self.x = x
         self.y = y
         self.orientation = orientation
