@@ -41,7 +41,9 @@ class Rover(object):
 
     def __do_move(self, to_move):
         newpos = [ a + b for (a,b) in zip(to_move, [self.x, self.y])] 
-        return Rover(newpos[0], newpos[1], self.orientation, self.width, self.height)
+        new_x = newpos[0] % self.width
+        new_y = newpos[1] % self.width
+        return Rover(new_x, new_y, self.orientation, self.width, self.height)
 
     def left(self):
         return Rover(self.x, self.y, self.orientation, self.width, self.height)
