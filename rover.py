@@ -26,16 +26,16 @@ class Rover(object):
         self.height = height
 
     def forward(self):
-        pass
+        return Rover(self.x, self.y, self.orientation, self.width, self.height)
 
     def backward(self):
-        pass
+        return Rover(self.x, self.y, self.orientation, self.width, self.height)
 
     def left(self):
-        pass
+        return Rover(self.x, self.y, self.orientation, self.width, self.height)
 
     def right(self):
-        pass
+        return Rover(self.x, self.y, self.orientation, self.width, self.height)
 
     def get_position(self):
         return (self.x, self.y)
