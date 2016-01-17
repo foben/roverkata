@@ -26,7 +26,8 @@ class Rover(object):
         if not (width > 0 and height > 0):
             raise ValueError('width and height must be greater than 0')
         if x >= width or y >= height:
-            raise ValueError('x or y coordinate is out of range for the given widht or height')
+            raise ValueError('coordinate-indices ({}, {}) are out of range for the dimensions ({} x {})'
+                    .format(x, y, width, height))
 
         self.x = x
         self.y = y
@@ -45,7 +46,7 @@ class Rover(object):
     def __do_move(self, to_move):
         newpos = [ a + b for (a,b) in zip(to_move, [self.x, self.y])] 
         new_x = newpos[0] % self.width
-        new_y = newpos[1] % self.width
+        new_y = newpos[1] % self.height
         return Rover(new_x, new_y, self.orientation, self.width, self.height)
 
     def left(self):
