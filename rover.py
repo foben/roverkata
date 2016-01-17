@@ -5,7 +5,11 @@ class Rover(object):
     """
 
     def __init__(self, x = 0, y = 0, orientation = 'N', width = 5, height = 5):
-        pass
+        self.x = x
+        self.y = y
+        self.orientation = orientation
+        self.width = width
+        self.height = height
 
     def forward(self):
         pass
@@ -20,14 +24,14 @@ class Rover(object):
         pass
 
     def get_position(self):
-        pass
+        return (self.x, self.y)
 
     def get_orientation(self):
-        pass
+        return self.orientation
 
     def get_width(self):
-        pass
+        return self.width
 
     def get_height(self):
-        pass
+        return self.height
 
